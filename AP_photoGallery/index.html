@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="css/custom.css">
+        <title>A photo gallery</title>
+    </head>
+
+    
+<body>
+<div ng-app="photoGallery" ng-controller="galleryCtrl">  
+
+<div id="previewBox">
+   <img ng-src="{{currentImage.image}}" alt="{{currentImage.description}}" />
+    <div id="navigationBox">
+      <p ng-click="setPreviousImage()"><span class="glyphicon glyphicon-chevron-left"></span>PREVIOUS</p>
+      <p ng-click="setNextImage()">NEXT<span class="glyphicon glyphicon-chevron-right"></span></p>   
+      <p ng-click="zoomImage()"><span class="glyphicon glyphicon-zoom-in"></span>VIEW LARGER</p>    
+    </div>
+</div>
+
+    
+<div id="thumbnailWrapper">
+    <ul id="thumbnailList">
+        <li ng-repeat="image in images" ng-click="setCurrentImage(image)">
+            <img ng-src="{{image.thumbnail}}" />
+        </li>
+    
+    </ul>
+</div>
+ 
+<div id="fullImageBox" ng-hide="hide_fullImage" ng-click="hideFullImage()">
+    <img ng-src="{{currentImage.full_image}}" alt="{{currentImage.description}}" />
+</div>     
+    
+</div>     
+
+    
+<script src="js/photoGallery.js"></script>    
+
+</body>
+</html>
